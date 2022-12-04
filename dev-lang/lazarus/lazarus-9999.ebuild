@@ -8,7 +8,7 @@ inherit eutils git-r3 desktop
 
 RESTRICT="strip" #269221
 
-SLOT="0" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
+SLOT="0/2.3" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
 LICENSE="GPL-2 LGPL-2.1 LGPL-2.1-linking-exception"
 KEYWORDS=""
 DESCRIPTION="Lazarus IDE is a feature rich visual programming environment emulating Delphi."
