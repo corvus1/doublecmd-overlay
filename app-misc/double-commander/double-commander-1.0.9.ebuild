@@ -20,8 +20,8 @@ IUSE="gtk qt5"
 REQUIRED_USE=" ^^ ( gtk qt5 )"
 RESTRICT="strip"
 
-DEPEND=">=dev-lang/lazarus-1.8
-	dev-libs/libqt5pas:0/2.3="
+DEPEND="dev-lang/lazarus:=
+	dev-libs/libqt5pas:="
 RDEPEND="
 	${DEPEND}
 	sys-apps/dbus

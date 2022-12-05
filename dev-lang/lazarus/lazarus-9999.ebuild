@@ -13,7 +13,7 @@ LICENSE="GPL-2 LGPL-2.1 LGPL-2.1-linking-exception"
 KEYWORDS=""
 DESCRIPTION="Lazarus IDE is a feature rich visual programming environment emulating Delphi."
 HOMEPAGE="http://www.lazarus.freepascal.org/"
-IUSE="+fpc240"
+#IUSE="+fpc240"
 
 EGIT_REPO_URI="https://gitlab.com/freepascal.org/lazarus/lazarus.git"
 
@@ -24,6 +24,8 @@ DEPEND="~dev-lang/fpc-${FPCVER}
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	>=sys-devel/binutils-2.19.1-r1"
+
+BDEPEND="dev-libs/libqt5pas:0/2.3"
 
 src_prepare() {
 	ewarn
