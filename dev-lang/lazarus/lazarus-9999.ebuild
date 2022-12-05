@@ -23,9 +23,8 @@ DEPEND="~dev-lang/fpc-${FPCVER}
 	net-misc/rsync"
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
-	>=sys-devel/binutils-2.19.1-r1"
-
-BDEPEND="dev-libs/libqt5pas:0/2.3"
+	>=sys-devel/binutils-2.19.1-r1
+	dev-libs/libqt5pas:0/2.3"
 
 src_prepare() {
 	ewarn
