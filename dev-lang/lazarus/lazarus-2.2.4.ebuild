@@ -16,12 +16,15 @@ SRC_URI="https://sourceforge.net/projects/${PN}/files/Lazarus%20Zip%20_%20GZip/L
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0/2.2" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
 KEYWORDS="~amd64 ~x86"
-IUSE="minimal"
+IUSE="minimal gtk2 +qt5"
+REQUIRED_USE=" ^^ ( gtk2 qt5 )"
 
 DEPEND=">=dev-lang/fpc-${FPCVER}[source]
 	net-misc/rsync
-	x11-libs/gtk+:2
-	>=sys-devel/binutils-2.19.1-r1:="
+	qt5? ( dev-libs/libqt5pas:0/2.2 )
+	gtk2? ( x11-libs/gtk+:2 )
+	>=sys-devel/binutils-2.19.1-r1:=
+"
 RDEPEND="${DEPEND}"
 
 RESTRICT="strip" #269221
@@ -43,10 +46,10 @@ src_prepare() {
 
 src_compile() {
 	# TODO: Change to LCL_PLATFORM=qt5?
-	# bug #732758
-	LCL_PLATFORM=gtk2 emake \
-		$(usex minimal "" "bigide") \
-		-j1
+	# bug #732758 
+	use qt5 && export LCL_PLATFORM=qt5
+	use gtk2 && export LCL_PLATFORM=gtk2
+	emake $(usex minimal "" "bigide") -j1
 }
 
 src_install() {
