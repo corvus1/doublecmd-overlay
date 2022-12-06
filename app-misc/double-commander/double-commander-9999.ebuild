@@ -20,13 +20,13 @@ REQUIRED_USE=" ^^ ( gtk qt5 )"
 RESTRICT="strip"
 
 DEPEND="dev-lang/lazarus:0/2.3
-	dev-libs/libqt5pas:0/2.3"
+	qt5? ( dev-libs/libqt5pas:0/2.3 )
+	gtk? ( x11-libs/gtk+:2 )"
 RDEPEND="
 	${DEPEND}
 	sys-apps/dbus
 	dev-libs/glib
 	x11-libs/libX11
-	gtk? ( x11-libs/gtk+:2 )
 	qt5? ( >=dev-qt/qtcore-5.6 )
 "
 
