@@ -16,15 +16,19 @@ SRC_URI="https://sourceforge.net/projects/${PN}/files/Lazarus%20Zip%20_%20GZip/L
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0/2.2" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
 KEYWORDS="~amd64 ~x86"
-IUSE="minimal gtk2 +qt5"
-REQUIRED_USE=" ^^ ( gtk2 qt5 )"
+IUSE="gtk2 +gui"
+REQUIRED_USE="gtk2? ( gui )"
+REQUIRED_USE="!gui? ( !gtk2 )"
 
 DEPEND=">=dev-lang/fpc-${FPCVER}[source]
-	net-misc/rsync
-	qt5? ( dev-libs/libqt5pas:0/2.2 )
-	gtk2? ( x11-libs/gtk+:2 )
 	>=sys-devel/binutils-2.19.1-r1:=
-"
+	gui? ( 
+	    !gtk2? ( dev-libs/libqt5pas:0/2.2 )
+	    gtk2? ( x11-libs/gtk+:2 )
+)"
+
+BDEPEND="net-misc/rsync"
+
 RDEPEND="${DEPEND}"
 
 RESTRICT="strip" #269221
@@ -47,9 +51,15 @@ src_prepare() {
 src_compile() {
 	# TODO: Change to LCL_PLATFORM=qt5?
 	# bug #732758 
-	use qt5 && export LCL_PLATFORM=qt5
+	if ( use gui ) && ( use !gtk2 ) ; then
+		export LCL_PLATFORM=qt5
+	fi
 	use gtk2 && export LCL_PLATFORM=gtk2
-	emake $(usex minimal "" "bigide") -j1
+	if ( use gui ) ; then
+		emake -j1 || die "make failed!"
+	else
+		emake lazbuild -j1 || die "make failed!"
+	fi
 }
 
 src_install() {
@@ -71,10 +81,12 @@ src_install() {
 		"${S}" "${ED}"/usr/share \
 		|| die "Unable to copy files!"
 
-	dosym ../share/lazarus/startlazarus /usr/bin/startlazarus
-	dosym ../share/lazarus/startlazarus /usr/bin/lazarus
+	if ( use gui ) ; then
+		dosym ../share/lazarus/startlazarus /usr/bin/startlazarus
+		dosym ../share/lazarus/startlazarus /usr/bin/lazarus
+	fi
 	dosym ../share/lazarus/lazbuild /usr/bin/lazbuild
-	use minimal || dosym ../share/lazarus/components/chmhelp/lhelp/lhelp /usr/bin/lhelp
+	use gui || dosym ../share/lazarus/components/chmhelp/lhelp/lhelp /usr/bin/lhelp
 	dosym ../lazarus/images/ide_icon48x48.png /usr/share/pixmaps/lazarus.png
 
 	make_desktop_entry startlazarus "Lazarus IDE" "lazarus"
