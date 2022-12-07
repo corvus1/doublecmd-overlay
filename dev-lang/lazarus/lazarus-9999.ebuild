@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI=7
+EAPI=8
 
-inherit eutils git-r3 desktop
+inherit git-r3 desktop
 
 RESTRICT="strip" #269221
 
