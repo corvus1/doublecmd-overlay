@@ -29,6 +29,7 @@ RDEPEND="
 	x11-libs/libX11
 	qt5? ( >=dev-qt/qtcore-5.6 )
 "
+BDEPEND="net-misc/rsync"
 
 S="${WORKDIR}/${PN}-${PV}"
 
