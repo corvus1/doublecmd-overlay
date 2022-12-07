@@ -13,8 +13,10 @@ LICENSE="GPL-2 LGPL-2.1 LGPL-2.1-linking-exception"
 KEYWORDS=""
 DESCRIPTION="Lazarus IDE is a feature rich visual programming environment emulating Delphi."
 HOMEPAGE="http://www.lazarus.freepascal.org/"
-IUSE="gtk2 +qt5"
-REQUIRED_USE=" ^^ ( gtk2 qt5 )"
+IUSE="gtk2 +gui +qt5"
+REQUIRED_USE="gui? ( ^^ ( gtk2 qt5 ) )"
+REQUIRED_USE="!gui? ( !qt5 )"
+REQUIRED_USE="!gui? ( !gtk2 )"
 
 EGIT_REPO_URI="https://gitlab.com/freepascal.org/lazarus/lazarus.git"
 
@@ -50,7 +52,11 @@ src_prepare() {
 src_compile() {
 	use qt5 && export LCL_PLATFORM=qt5
 	use gtk2 && export LCL_PLATFORM=gtk2
-	emake -j1 || die "make failed!"
+	if [[ $( use gui ) ]]; then
+		emake -j1 || die "make failed!"
+	else
+		emake lazbuild -j1 || die "make failed!"
+	fi
 }
 
 src_install() {
@@ -73,8 +79,10 @@ src_install() {
 		"${S}"/* "${D}"/usr/share/lazarus \
 	|| die "Unable to copy files!"
 
+	if [[ $( use gui ) ]]; then
 	dosym ../share/lazarus/startlazarus /usr/bin/startlazarus
 	dosym ../share/lazarus/startlazarus /usr/bin/lazarus
+	fi
 	dosym ../share/lazarus/lazbuild /usr/bin/lazbuild
 	dosym ../lazarus/images/ide_icon48x48.png /usr/share/pixmaps/lazarus.png
 
