@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>voron1@gmail.com</email>
-    <name>Corvus</name>
-  </maintainer>
-  <use>
-    <flag name="gui">Build GUI IDE.</flag>
-    <flag name="gtk2">Use gtk:2 for widgets.</flag>
-    <flag name="extras">Build a lot of extra packages, including lhelp chm viewer program.</flag>
-  </use>
+	<maintainer type="person">
+		<email>voron1@gmail.com</email>
+		<name>Corvus</name>
+	</maintainer>
+	<use>
+		<flag name="gui">Build GUI IDE.</flag>
+		<flag name="gtk2">Use gtk:2 for widgets.</flag>
+		<flag name="extras">Build a lot of extra packages, including lhelp chm viewer program.</flag>
+	</use>
 </pkgmetadata>
