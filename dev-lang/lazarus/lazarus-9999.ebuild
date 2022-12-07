@@ -21,8 +21,8 @@ EGIT_REPO_URI="https://gitlab.com/freepascal.org/lazarus/lazarus.git"
 
 FPCVER="3.2.2"
 
-DEPEND="~dev-lang/fpc-${FPCVER}
-	net-misc/rsync"
+DEPEND="~dev-lang/fpc-${FPCVER}"
+BDEPEND="net-misc/rsync"
 RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	>=sys-devel/binutils-2.19.1-r1
