@@ -16,9 +16,10 @@ SRC_URI="https://sourceforge.net/projects/${PN}/files/Lazarus%20Zip%20_%20GZip/L
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0/2.2" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
 KEYWORDS="~amd64 ~x86"
-IUSE="gtk2 +gui"
+IUSE="gtk2 +gui extras"
 REQUIRED_USE="gtk2? ( gui )"
 REQUIRED_USE="!gui? ( !gtk2 )"
+REQUIRED_USE="extras? ( gui )"
 
 DEPEND=">=dev-lang/fpc-${FPCVER}[source]
 	>=sys-devel/binutils-2.19.1-r1:=
@@ -56,7 +57,7 @@ src_compile() {
 	fi
 	use gtk2 && export LCL_PLATFORM=gtk2
 	if ( use gui ) ; then
-		emake -j1 || die "make failed!"
+		emake all $(usex extras "bigide lhelp" "") -j1 || die "make failed!"
 	else
 		emake lazbuild -j1 || die "make failed!"
 	fi
@@ -86,7 +87,7 @@ src_install() {
 		dosym ../share/lazarus/startlazarus /usr/bin/lazarus
 	fi
 	dosym ../share/lazarus/lazbuild /usr/bin/lazbuild
-	use gui || dosym ../share/lazarus/components/chmhelp/lhelp/lhelp /usr/bin/lhelp
+	use extras && dosym ../share/lazarus/components/chmhelp/lhelp/lhelp /usr/bin/lhelp
 	dosym ../lazarus/images/ide_icon48x48.png /usr/share/pixmaps/lazarus.png
 
 	make_desktop_entry startlazarus "Lazarus IDE" "lazarus"
