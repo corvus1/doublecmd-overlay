@@ -29,17 +29,12 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-if [[ ${PV} = 9999* ]]; then
-	S="${WORKDIR}/${P}/lcl/interfaces/qt5/cbindings"
-else
-	S="${WORKDIR}/lazarus/lcl/interfaces/qt5/cbindings"
-fi
-
+S="${WORKDIR}/lazarus/lcl/interfaces/qt5/cbindings"
 
 src_unpack () {
 	if [[ ${PV} = 9999* ]]; then
 		git-r3_fetch ${EGIT_REPO_URI}
-		git-r3_checkout ${EGIT_REPO_URI} "${WORKDIR}/${P}" "" "lcl/interfaces/qt5/cbindings"
+		git-r3_checkout ${EGIT_REPO_URI} "${WORKDIR}/lazarus" "" "lcl/interfaces/qt5/cbindings"
 	else
 		unpack ${P}.tar.gz
 	fi
