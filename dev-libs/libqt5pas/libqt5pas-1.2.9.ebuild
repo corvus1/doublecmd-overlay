@@ -11,8 +11,7 @@ if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://gitlab.com/freepascal.org/lazarus/lazarus.git"
 	inherit git-r3
 else
-#SRC_URI="https://sourceforge.net/projects/lazarus/files/Lazarus%20Zip%20_%20GZip/Lazarus%20${LAZRELEASE}/lazarus-${LAZRELEASE}-0.tar.gz/download -> ${P}.tar.gz"
-	SRC_URI="mirror://sourceforge/lazarus/${MY_P}.tar.gz"
+	SRC_URI="mirror://sourceforge/lazarus/${MY_P}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
