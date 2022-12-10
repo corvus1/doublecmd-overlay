@@ -91,5 +91,5 @@ src_install() {
 	use extras && dosym ../share/lazarus/components/chmhelp/lhelp/lhelp /usr/bin/lhelp
 	dosym ../lazarus/images/ide_icon48x48.png /usr/share/pixmaps/lazarus.png
 
-	make_desktop_entry startlazarus "Lazarus IDE" "lazarus" || die "Failed making desktop entry!"
+	use gui && make_desktop_entry startlazarus "Lazarus IDE" "lazarus" || die "Failed making desktop entry!"
 }

@@ -11,7 +11,7 @@ FPCVER="3.2.2"
 
 DESCRIPTION="Lazarus IDE is a feature rich visual programming environment emulating Delphi"
 HOMEPAGE="https://www.lazarus-ide.org/"
-SRC_URI="https://sourceforge.net/projects/${PN}/files/Lazarus%20Zip%20_%20GZip/Lazarus%20${PV}/${P}-0.tar.gz"
+SRC_URI="mirror://sourceforge/lazarus/${P}-0.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0/2.2" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
