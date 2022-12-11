@@ -18,7 +18,7 @@ SLOT="0/2.2" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk2 +gui extras"
 REQUIRED_USE="gtk2? ( gui )
-<------>extras? ( gui )"
+	extras? ( gui )"
 
 DEPEND=">=dev-lang/fpc-${FPCVER}[source]
 	>=sys-devel/binutils-2.19.1-r1:=
