@@ -17,9 +17,8 @@ LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0/2.2" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk2 +gui extras"
-REQUIRED_USE="gtk2? ( gui )"
-REQUIRED_USE="!gui? ( !gtk2 )"
-REQUIRED_USE="extras? ( gui )"
+REQUIRED_USE="gtk2? ( gui )
+<------>extras? ( gui )"
 
 DEPEND=">=dev-lang/fpc-${FPCVER}[source]
 	>=sys-devel/binutils-2.19.1-r1:=

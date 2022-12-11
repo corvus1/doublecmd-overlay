@@ -14,9 +14,8 @@ KEYWORDS=""
 DESCRIPTION="Lazarus IDE is a feature rich visual programming environment emulating Delphi."
 HOMEPAGE="http://www.lazarus.freepascal.org/"
 IUSE="gtk2 +gui extras"
-REQUIRED_USE="gtk2? ( gui )"
-REQUIRED_USE="!gui? ( !gtk2 )"
-REQUIRED_USE="extras? ( gui )"
+REQUIRED_USE="gtk2? ( gui )
+	extras? ( gui )"
 
 EGIT_REPO_URI="https://gitlab.com/freepascal.org/lazarus/lazarus.git"
 
