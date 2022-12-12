@@ -9,7 +9,7 @@ inherit xdg-utils git-r3
 
 ABBREV="doublecmd"
 DESCRIPTION="Cross Platform file manager."
-HOMEPAGE="http://${ABBREV}.sourceforge.net/"
+HOMEPAGE="http://doublecmd.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
