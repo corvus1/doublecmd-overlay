@@ -5,26 +5,23 @@ EAPI=8
 
 inherit xdg-utils
 
+DESCRIPTION="Cross Platform file manager."
+HOMEPAGE="http://doublecmd.sourceforge.net/"
 SRC_URI="https://github.com/doublecmd/doublecmd/releases/download/v${PV}/doublecmd-${PV}-src.tar.gz"
-
+LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 ABBREV="doublecmd"
-DESCRIPTION="Cross Platform file manager."
-HOMEPAGE="http://${ABBREV}.sourceforge.net/"
 
-LICENSE="GPL-2"
-SLOT="0"
-
-IUSE="gtk qt5"
-REQUIRED_USE=" ^^ ( gtk qt5 )"
 RESTRICT="strip"
 
 DEPEND="dev-lang/lazarus:0/2.2
-	gtk? ( x11-libs/gtk+:2 )
-	qt5? ( >=dev-qt/qtcore-5.6 
-		dev-libs/libqt5pas:0/2.2
-)"
+	>=dev-qt/qtcore-5.6
+	>=dev-qt/qtgui-5.6
+	>=dev-qt/qtnetwork-5.6
+	>=dev-qt/qtx11extras-5.6
+	dev-libs/libqt5pas:0/2.2"
 
 BDEPEND="net-misc/rsync"
 
@@ -38,15 +35,13 @@ S="${WORKDIR}/${ABBREV}-${PV}"
 
 src_prepare(){
 	eapply_user
-	use gtk && export lcl="gtk2"
-	use qt5 && export lcl="qt5"
 	use amd64 && export CPU_TARGET="x86_64" || export CPU_TARGET="i386"
 	export lazpath="/usr/share/lazarus"
 	find ./ -type f -name "build.sh" -exec sed -i 's#$lazbuild #$lazbuild --lazarusdir=/usr/share/lazarus #g' {} \;
 }
 
 src_compile(){
-	./build.sh release || die
+	./build.sh release qt5 || die
 }
 
 src_install(){
