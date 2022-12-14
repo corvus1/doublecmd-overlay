@@ -16,15 +16,15 @@ ABBREV="doublecmd"
 
 RESTRICT="strip"
 
-DEPEND="dev-lang/lazarus:0/2.2
+DEPEND="
 	>=dev-qt/qtcore-5.6
 	>=dev-qt/qtgui-5.6
 	>=dev-qt/qtnetwork-5.6
 	>=dev-qt/qtx11extras-5.6
 	dev-libs/libqt5pas:0/2.2"
-
-BDEPEND="net-misc/rsync"
-
+BDEPEND="
+	dev-lang/lazarus:0/2.2
+	net-misc/rsync"
 RDEPEND="
 	${DEPEND}
 	sys-apps/dbus
