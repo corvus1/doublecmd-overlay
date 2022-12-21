@@ -6,17 +6,16 @@ EAPI=8
 
 inherit git-r3 desktop
 
-RESTRICT="strip" #269221
-
-SLOT="0/2.3" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
-LICENSE="GPL-2 LGPL-2.1 LGPL-2.1-linking-exception"
-KEYWORDS=""
 DESCRIPTION="Lazarus IDE is a feature rich visual programming environment emulating Delphi."
 HOMEPAGE="http://www.lazarus.freepascal.org/"
+EGIT_REPO_URI="https://gitlab.com/freepascal.org/lazarus/lazarus.git"
+
+LICENSE="GPL-2 LGPL-2.1 LGPL-2.1-linking-exception"
+SLOT="0/2.3" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
+RESTRICT="strip" #269221
+
 IUSE="gtk2 +gui extras"
 REQUIRED_USE="gtk2? ( gui ) extras? ( gui )"
-
-EGIT_REPO_URI="https://gitlab.com/freepascal.org/lazarus/lazarus.git"
 
 FPCVER="3.2.2"
 
@@ -44,9 +43,6 @@ src_prepare() {
 			sh -s /usr/lib/fpc/${FPCVER} "${PPC_CONFIG_PATH}" || die
 		#sed -i -e '/^-Xs/d' "${PPC_CONFIG_PATH}"/fpc.cfg || die
 	fi
-
-
-
 }
 
 src_compile() {
