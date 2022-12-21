@@ -9,7 +9,7 @@ inherit desktop
 # changes in FPCVER. It *does* change between minor versions of lazarus.
 FPCVER="3.2.2"
 
-DESCRIPTION="Lazarus IDE is a feature rich visual programming environment emulating Delphi"
+DESCRIPTION="Feature rich visual programming environment emulating Delphi"
 HOMEPAGE="https://www.lazarus-ide.org/"
 SRC_URI="mirror://sourceforge/lazarus/${P}-0.tar.gz"
 
@@ -17,18 +17,16 @@ LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0/2.2" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
 KEYWORDS="~amd64 ~x86"
 IUSE="gtk2 +gui extras"
-REQUIRED_USE="gtk2? ( gui )
-	extras? ( gui )"
+REQUIRED_USE="gtk2? ( gui ) extras? ( gui )"
 
-DEPEND=">=dev-lang/fpc-${FPCVER}[source]
+DEPEND="
+	>=dev-lang/fpc-${FPCVER}[source]
 	>=sys-devel/binutils-2.19.1-r1:=
-	gui? ( 
+	gui? (
 	    !gtk2? ( dev-libs/libqt5pas:0/2.2 )
 	    gtk2? ( x11-libs/gtk+:2 )
 )"
-
 BDEPEND="net-misc/rsync"
-
 RDEPEND="${DEPEND}"
 
 RESTRICT="strip" #269221
@@ -50,7 +48,7 @@ src_prepare() {
 
 src_compile() {
 	# TODO: Change to LCL_PLATFORM=qt5?
-	# bug #732758 
+	# bug #732758
 	if ( use gui ) && ( use !gtk2 ) ; then
 		export LCL_PLATFORM=qt5
 	fi
