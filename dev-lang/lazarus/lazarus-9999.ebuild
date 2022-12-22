@@ -22,7 +22,7 @@ FPCVER="3.2.2"
 DEPEND="
 	~dev-lang/fpc-${FPCVER}
 	>=sys-devel/binutils-2.19.1-r1
-	gui? ( 
+	gui? (
 	    !gtk2? ( dev-libs/libqt5pas:0/2.3 )
 	    gtk2? ( x11-libs/gtk+:2 )
 )"
@@ -78,8 +78,8 @@ src_install() {
 	|| die "Unable to copy files!"
 
 	if ( use gui ) ; then
-	dosym ../share/lazarus/startlazarus /usr/bin/startlazarus
-	dosym ../share/lazarus/startlazarus /usr/bin/lazarus
+		dosym ../share/lazarus/startlazarus /usr/bin/startlazarus
+		dosym ../share/lazarus/startlazarus /usr/bin/lazarus
 	fi
 	dosym ../share/lazarus/lazbuild /usr/bin/lazbuild
 	use extras && dosym ../share/lazarus/components/chmhelp/lhelp/lhelp /usr/bin/lhelp
