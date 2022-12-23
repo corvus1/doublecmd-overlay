@@ -5,7 +5,6 @@ EAPI=8
 
 inherit xdg git-r3
 
-
 DESCRIPTION="Cross Platform file manager"
 HOMEPAGE="http://doublecmd.sourceforge.net/"
 EGIT_REPO_URI="https://github.com/doublecmd/doublecmd"
