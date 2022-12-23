@@ -38,11 +38,11 @@ src_prepare() {
 }
 
 src_compile() {
-	./build.sh release qt5 || die "build.sh failed
+	./build.sh release qt5 || die "build.sh failed"
 }
 
 src_install() {
-	install/linux/install.sh --install-prefix=build || die #install.sh failed
+	install/linux/install.sh --install-prefix=build || die "install.sh failed"
 
 	# Since we're installing a polkit action, let's utilize it. For extra fanciness.
 	printf "\nActions=StartAsRoot;\n\n[Desktop Action StartAsRoot]\nExec=/usr/bin/pkexec /usr/bin/doublecmd\nName=Start as root\n" >> \
@@ -53,7 +53,7 @@ src_install() {
 	mv "${S}/build/usr/share/applications/${ABBREV}.desktop" \
 		"${S}/build/usr/share/applications/${ABBREV}-${PN}.desktop" || die
 
-	#using rsync to speed things up
+	# Using rsync to speed things up
 	rsync -a "${S}/build/" "${D}/" || die "Unable to copy files"
 	dosym ../lib64/${ABBREV}/${ABBREV} /usr/bin/${ABBREV}
 }
