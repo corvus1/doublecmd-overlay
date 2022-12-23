@@ -15,7 +15,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-DESCRIPTION="Free Pascal Qt5 bindings library updated by lazarus IDE."
+DESCRIPTION="Free Pascal Qt5 bindings library updated by lazarus IDE"
 HOMEPAGE="https://gitlab.com/freepascal.org/lazarus/lazarus"
 LICENSE="LGPL-3"
 SLOT="0/2.3"
