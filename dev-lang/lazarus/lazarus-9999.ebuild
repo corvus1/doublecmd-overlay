@@ -6,7 +6,7 @@ EAPI=8
 
 inherit git-r3 desktop
 
-DESCRIPTION="Lazarus IDE is a feature rich visual programming environment emulating Delphi."
+DESCRIPTION="Feature rich visual programming environment emulating Delphi"
 HOMEPAGE="http://www.lazarus.freepascal.org/"
 EGIT_REPO_URI="https://gitlab.com/freepascal.org/lazarus/lazarus.git"
 
