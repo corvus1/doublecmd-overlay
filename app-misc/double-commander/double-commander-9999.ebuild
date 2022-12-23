@@ -5,7 +5,6 @@ EAPI=8
 
 inherit xdg git-r3
 
-ABBREV="doublecmd"
 
 DESCRIPTION="Cross Platform file manager"
 HOMEPAGE="http://doublecmd.sourceforge.net/"
@@ -14,6 +13,8 @@ EGIT_REPO_URI="https://github.com/doublecmd/doublecmd"
 LICENSE="GPL-2"
 SLOT="0"
 RESTRICT="strip" #FreePascal does its own stripping
+
+ABBREV="doublecmd"
 
 DEPEND="
 	dev-libs/libqt5pas:0/2.3"
